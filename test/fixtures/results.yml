@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  speed: 1
+  time: 1
+  level_id: 1
+  user_id: 1
+
+two:
+  speed: 1
+  time: 1
+  level_id: 1
+  user_id: 1
