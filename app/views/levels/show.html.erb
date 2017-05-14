@@ -1,1 +1,74 @@
-show.html.erb
+
+<div id="app">
+
+<!-- hero-section -->
+<section class="hero-section hero-particle-bg" id="top" data-stellar-background-ratio="0.1">
+    <div id="particles-js"></div>
+    <div class="slider-caption">
+        <div class="container">
+            <div class="row">
+                <h1>welcome to <span>Code speed 3</span></h1>
+                <h5>Just another particle effect</h5>
+            </div>
+        </div>
+    </div>
+</section>
+
+        
+<section class="about-us" id="about">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 col-xs-12 no-padding">
+                <!-- About Us Left -->
+                <div class="about-us-left">
+                    <h2 class="section-title-left"><%= @coding_language.language_name %> Level:<%= @level.coding_language_id %></h2>
+                    <p id="level_code"> <%= @level.code %> </p>
+                    <h3>Your code:</h3>
+  									{{userText}}
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12 no-padding">
+                <!-- About Us Right -->
+                <div class="about-us-right">
+
+									<button v-on:click="counter()">Start</button>
+									<button v-on:click="resetButton()">Reset</button>
+									<button v-on:click="nextlexl()">Next Level ></button>
+									<span>{{countdown}}</span>
+									<textarea cols="60" rows="15" tabindex="101" v-model="userText"></textarea>
+									<button class="btn-primary btn-contact btn-block" v-on:click="submitCode()">Submit Code!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+   
+                                    WPM: {{ wpm }}
+                                    errors:
+                                    How long it took:
+                                    Code you typed: {{userText}}
+                                  
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div> <!-- end of vue app -->

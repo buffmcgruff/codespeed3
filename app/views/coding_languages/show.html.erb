@@ -1,1 +1,7 @@
-show.html.erb
+<h1><%= @language.language_name %></h1>
+
+<h2>Levels:</h2>
+
+<% @language.levels.each do |level| %>
+	<a href="/levels/<%= level.id %>"><%= level.level_name %></a>
+<% end %>
