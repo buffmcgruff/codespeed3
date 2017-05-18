@@ -7,8 +7,8 @@
     <div class="slider-caption">
         <div class="container">
             <div class="row">
-                <h1>welcome to <span>Code speed 3</span></h1>
-                <h5>Just another particle effect</h5>
+                <h1> <span>Code speed 3</span></h1>
+               
             </div>
         </div>
     </div>
@@ -21,8 +21,11 @@
             <div class="col-sm-6 col-xs-12 no-padding">
                 <!-- About Us Left -->
                 <div class="about-us-left">
-                    <h2 class="section-title-left"><%= @coding_language.language_name %> Level:<%= @level.coding_language_id %></h2>
-                    <p id="level_code"> <%= @level.code %> </p>
+                    <h2 class="section-title-left"><%= @coding_language.language_name %> Level:<%= @level.level_number %></h2>
+
+                    <pre><code class="ruby" id="level_code"><%= @level.code %></code></pre>
+
+
                     <h3>Your code:</h3>
   									{{userText}}
                 </div>
@@ -30,13 +33,18 @@
             <div class="col-sm-6 col-xs-12 no-padding">
                 <!-- About Us Right -->
                 <div class="about-us-right">
+                        <button class="startButton" v-on:click="counter()">Start</button>
+                        <button class="myButton" v-on:click="resetButton()">Reset</button>
 
-									<button v-on:click="counter()">Start</button>
-									<button v-on:click="resetButton()">Reset</button>
-									<button v-on:click="nextlexl()">Next Level ></button>
-									<span>{{countdown}}</span>
-									<textarea cols="60" rows="15" tabindex="101" v-model="userText"></textarea>
-									<button class="btn-primary btn-contact btn-block" v-on:click="submitCode()">Submit Code!</button>
+                        <a class="submit" href="/<%= params[:language_name] %>/levels/<%= params[:level_number].to_i - 1 %>"> < Prev</a>
+
+                        <a class="submit" href="/<%= params[:language_name] %>/levels/<%= params[:level_number].to_i + 1 %>">Next Level ></a>
+
+
+                        <span>{{countdown}}</span>
+                        <textarea cols="40" rows="10" tabindex="101" v-model="userText"></textarea>
+                        <button class="submit" class="btn-primary btn-contact btn-block" v-on:click="submitCode()">Submit Code!</button>
+
                 </div>
             </div>
         </div>
@@ -51,20 +59,21 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="text" class="modal-title" id="myModalLabel">Resluts</h4>
       </div>
       <div class="modal-body">
-   
-                                    WPM: {{ wpm }}
-                                    errors:
-                                    How long it took:
-                                    Code you typed: {{userText}}
-                                  
+                        <div>
+                       <li><h3 class="results"> WPM: {{ wpm }}</h3></li>
+                       <li> <h3 class="results">errors: {{mistakeCount}}</h3></li>
+                       <li><h3 class="results"> accuracy: {{accuracy}} </h3></li>
+                       <li><h3 class="results"> Code you typed: {{userText}} </h3></li>
+                                  </div>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button class="myButton" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button class="myButton" type="button" class="btn btn-primary">Reset</button>
+        <button  class="submit" type="button" class="btn btn-primary">NextLevel></button>
       </div>
     </div>
   </div>

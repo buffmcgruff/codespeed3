@@ -1,7 +1,31 @@
-<h1>Home</h1>
+<div class="container py-3">
 
-<h2>Choose a level</h2>
 
-<a href="/coding_languages/1" class="btn btn-primary btn-lg">Ruby</a>
+<h4>Choose a level</h4>
+</div>
 
-<a href="/coding_languages/2" class="btn btn-primary btn-lg">JavaScript</a>
+<section>
+	<% @languages.each do |language| %>
+	  <div class="container py-3">
+	    <div class="card">
+	      <div class="row ">
+	        <div class="col-md-3">
+            <img src="https://placeholdit.imgix.net/~text?txtsize=38&txt=200%C3%97200&w=200&h=200">
+	        </div>
+          <div class="col-md-5 px-3">
+            <div class="card-block px-3">
+              <h1 class="card-title"><%= language.language_name %></h1>
+              <p class="card-text">Some text</p>
+              <a href="/coding_languages/<%= language.id %>" class="btn btn-primary">Start Here</a>
+            </div>
+          </div>
+	        </div>
+	      </div>
+	    </div>
+	<% end %>
+</section>
+
+<a class="submit" href="/coding_languages/1">ruby</a>
+<a class="submit" href="/coding_languages/2">JavaScript</a>
+
+

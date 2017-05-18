@@ -3,5 +3,25 @@
 <h2>Levels:</h2>
 
 <% @language.levels.each do |level| %>
-	<a href="/levels/<%= level.id %>"><%= level.level_name %></a>
 <% end %>
+
+<section>
+	<% @language.levels.each do |level| %>
+	  <div class="container py-3">
+		    <div class="card">
+		      <div class="row ">
+		        <div class="col-md-3">
+	           <h1> <%= level.level_number %></h1>
+		        </div>
+	          <div class="col-md-5 px-3">
+	            <div class="card-block px-3">
+	              <h1 class="card-title"><%= level.level_name %></h1>
+	              <p class="card-text">Some text</p>
+	              <a href="/<%= @language.language_name %>/levels/<%= level.level_number %>" class="btn btn-primary">Start Here</a>
+	            </div>
+	          </div>
+		        </div>
+		      </div>
+	    </div>
+	<% end %>
+</section>

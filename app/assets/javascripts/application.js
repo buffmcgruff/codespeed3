@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require keypress-2.1.4.min.js
+//= require vue
 //= require_tree .
 
 

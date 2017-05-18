@@ -14,4 +14,11 @@ Rails.application.routes.draw do
   post '/results' => "results#show"
  
   get '/contact' => "users#contact"
+
+
+  # Route for levels
+  # /ruby/levels/1 => Level 1 for Ruby
+  #   params[:language_name] = 'ruby'
+  #   params[:level_number] = 1
+  get '/:language_name/levels/:level_number' => 'levels#show'
 end

@@ -4,10 +4,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     data: {
     	secondsCount: 0,
     	countdown: 59,
-    	errors: 0,
+    	mistakeCount: 0,
     	userText: '',
-    	array1 =  
-    	wpm: 0
+    	wpm: 0,
+    	accuracy: 0
 
     },
 				
@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				var secondsElapsed = 59 - this.countdown;
 				console.log("How long it took: " + secondsElapsed);
 				this.act();
+				this.error();
 
 				// Launch modal
 				$('#myModal').modal();
@@ -46,22 +47,27 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 			error: function(){
 				var array1 = document.querySelector("#level_code").innerHTML;
-				var array2 = 'this.userText'
+				array1 = array1.trim();
+
+				var array2 = this.userText;
+
+				console.log("Given code:" + array1);
+				console.log("Your code:" + array2);
+
 				var length = array1.length;
-				var mistakeCount = 0;
 
 				for (var i = 0; i < length; i++) {
 					if (array1[i] != array2[i]) {
-						mistakeCount += 1;
+						this.mistakeCount += 1;
 					}
 				}
 
-				console.log("There were " + mistakeCount + " mistakes.")
+				console.log("There were " + this.mistakeCount + " mistakes.")
 
 				// Calcualte accuracy
-				var percentageIncorrect = ((mistakeCount / length) * 100);
-				var accuracy = 100 - percentageIncorrect;
-				console
+				var percentageIncorrect = ((this.mistakeCount / length) * 100);
+				this.accuracy = 100 - percentageIncorrect;
+				
 				 }
 			
 
