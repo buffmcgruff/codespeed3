@@ -18,7 +18,5 @@ class UsersController < ApplicationController
 		coding_language_id: input_codinglanguage_id)
 	end
 
-	def contact
-		
-	end
+
 end

@@ -10,34 +10,26 @@
 
 
 # CodingLanguage.create(
-# 	language_name: "Ruby"
+# 	language_name: "Angular.Js"
 # 	)
 
 # CodingLanguage.create(
-# 	language_name: "javascript"
+# 	language_name: "Node.Js"
 # 	)
 
 
-# Level.create(
-# 	level_name:"Code Flow: Left to Right",
-# 	level_number: 3,
-# 	code: "puts 21 - 6 / 2 * 3
-# 				Answer  12
-# 				100 * 5 - 2 / 2
-# 				answer 499" ,
-# 	coding_language_id: 1
-# 	)
+Level.create(
+	level_name:"",
+	level_number: 10,
+	code:"",
+	coding_language_id: 4
+	)
 
 # Level.create(
-# 	level_name:"puts statement",
+# 	level_name:"object",
 # 	level_number: 3,
-# 	code: "puts whats your first name:
-# gets.chomp
-# puts whats your middle name:
-# gets.chomp
-# puts what your last name
-# gets.chomp",
-# 	coding_language_id: 1
+# 	code:var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"},
+# 	coding_language_id: 2
 # 	)
 
 # Result.create(

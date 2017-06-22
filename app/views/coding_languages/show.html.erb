@@ -1,23 +1,33 @@
-<h1><%= @language.language_name %></h1>
 
-<h2>Levels:</h2>
+
+
+<div class="avatar">
+		<div class="language_icon">
+	
+	   <h1><i class="<%= @language.image %>">Levels</i></h1>
+      </div>
+ </div>
+
+
 
 <% @language.levels.each do |level| %>
 <% end %>
 
 <section>
-	<% @language.levels.each do |level| %>
+	<% @language.levels.order(:level_number).each do |level| %>
 	  <div class="container py-3">
 		    <div class="card">
 		      <div class="row ">
 		        <div class="col-md-3">
-	           <h1> <%= level.level_number %></h1>
+		        <div class="level_number">
+		           <h1> <%= level.level_number %></h1>
+	           </div>
 		        </div>
-	          <div class="col-md-5 px-3">
+	          <div class="col-md-9 px-3">
 	            <div class="card-block px-3">
 	              <h1 class="card-title"><%= level.level_name %></h1>
 	              <p class="card-text">Some text</p>
-	              <a href="/<%= @language.language_name %>/levels/<%= level.level_number %>" class="btn btn-primary">Start Here</a>
+	              <a href="/<%= @language.language_name %>/levels/<%= level.level_number %>" class="btn btn-primary">Level</a>
 	            </div>
 	          </div>
 		        </div>

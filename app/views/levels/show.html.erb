@@ -1,49 +1,41 @@
 
 <div id="app">
 
-<!-- hero-section -->
-<section class="hero-section hero-particle-bg" id="top" data-stellar-background-ratio="0.1">
-    <div id="particles-js"></div>
-    <div class="slider-caption">
-        <div class="container">
-            <div class="row">
-                <h1> <span>Code speed 3</span></h1>
-               
-            </div>
-        </div>
-    </div>
-</section>
-
         
-<section class="about-us" id="about">
+<section class="ruby">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-6 col-xs-12 no-padding">
-                <!-- About Us Left -->
-                <div class="about-us-left">
-                    <h2 class="section-title-left"><%= @coding_language.language_name %> Level:<%= @level.level_number %></h2>
+            <div class="ruby card">
+                <!-- buttons buttons -->
+                <div class="">
+                    <div class="level-title">
+                    <h2 class="section-title-left">
+                        <%= @coding_language.language_name %> Level:<%= @level.level_number %>
+                    </h2>
+                     <h1><span class="badge red">{{countdown}}s</span></h1>
+                    <div class="countdown"></div>
+                    </div>
+                        
+                    <button type="button" class="btn btn-outline-success waves-effect" v-on:click="counter()">start</button>
+                    <a class="btn btn-outline-danger waves-effect" class="btn btn-primary" href="javascript:window.location.reload();">Reset</a>
+
+                    <a class="btn btn-outline-secondary waves-effect" href="/<%= params[:language_name] %>/levels/<%= params[:level_number].to_i - 1 %>"> < Prev</a>
+
+                    <% if @next_level %>
+                    <a class="btn btn-outline-secondary waves-effect" href="/<%= params[:language_name] %>/levels/<%= params[:level_number].to_i + 1 %>">Next Level ></a>
+                    <% else %>
+                    <a class="btn btn-outline-secondary waves-effect" href="http://localhost:3000/">Main menu</a>
+                    <% end %>
+
 
                     <pre><code class="ruby" id="level_code"><%= @level.code %></code></pre>
+                    <div id="level_code_raw" style="visibility: hidden;"><%= @level.code %></div>
+                        <br/>
 
 
-                    <h3>Your code:</h3>
-  									{{userText}}
-                </div>
-            </div>
-            <div class="col-sm-6 col-xs-12 no-padding">
-                <!-- About Us Right -->
-                <div class="about-us-right">
-                        <button class="startButton" v-on:click="counter()">Start</button>
-                        <button class="myButton" v-on:click="resetButton()">Reset</button>
-
-                        <a class="submit" href="/<%= params[:language_name] %>/levels/<%= params[:level_number].to_i - 1 %>"> < Prev</a>
-
-                        <a class="submit" href="/<%= params[:language_name] %>/levels/<%= params[:level_number].to_i + 1 %>">Next Level ></a>
-
-
-                        <span>{{countdown}}</span>
-                        <textarea cols="40" rows="10" tabindex="101" v-model="userText"></textarea>
-                        <button class="submit" class="btn-primary btn-contact btn-block" v-on:click="submitCode()">Submit Code!</button>
+                    <!-- textarea  -->
+                    <textarea  class="textarea" class="" cols="30" rows="15" tabindex="101" placeholder="start coding here....." v-model="userText" v-on:keyup="startedTyping"></textarea>
+                    <button type="button" class="btn btn-outline-secondary waves-effect" v-on:click="submitCode()">Submit Code!</button>
 
                 </div>
             </div>
@@ -54,26 +46,44 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div  class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="text" class="modal-title" id="myModalLabel">Resluts</h4>
+        <h4 class="text" class="modal-title" id="myModalLabel">Results</h4>
       </div>
       <div class="modal-body">
-                        <div>
-                       <li><h3 class="results"> WPM: {{ wpm }}</h3></li>
-                       <li> <h3 class="results">errors: {{mistakeCount}}</h3></li>
-                       <li><h3 class="results"> accuracy: {{accuracy}} </h3></li>
-                       <li><h3 class="results"> Code you typed: {{userText}} </h3></li>
-                                  </div>
+                        
+                        <div class="card card-primary text-center z-depth-2">
+                            <div class="card-block">
+                                <h3 class="results"> WPM: {{ wpm }}</h3>
+                            </div>
+                       </div>
+
+                       <div class="card card-danger text-center z-depth-2">
+                            <div class="card-block">
+                                <h3 class="results">errors: {{mistakeCount}}</h3>
+                             </div>
+                       </div>
+
+                        <div class="card card-success text-center z-depth-2">
+                            <div class="card-block">
+                                <h3 class="results"> accuracy: {{accuracy}} </h3>
+                            </div>
+                       </div>
+                                  
 
       </div>
       <div class="modal-footer">
-        <button class="myButton" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button class="myButton" type="button" class="btn btn-primary">Reset</button>
-        <button  class="submit" type="button" class="btn btn-primary">NextLevel></button>
+        <button class="btn btn-outline-info waves-effect" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <a class="btn btn-outline-danger waves-effect" class="btn btn-primary" href="javascript:window.location.reload();">Reset</a>
+        
+        <% if @next_level %>
+            <a class="btn btn-outline-secondary waves-effect" href="/<%= params[:language_name] %>/levels/<%= params[:level_number].to_i + 1 %>">Next Level ></a>
+        <% else %>
+             <a class="btn btn-outline-secondary waves-effect" href="http://localhost:3000/">Main menu</a>
+        <% end %>
       </div>
     </div>
   </div>

@@ -14,6 +14,9 @@ class LevelsController < ApplicationController
 		# a) coding language id
 		# b) level number
 		@level = Level.where(coding_language_id: @coding_language.id, level_number: input_level_number).first
+		next_level_id = @level.id + 1
+		@next_level = Level.where(coding_language_id: @coding_language.id, level_number: next_level_id ).first 
+
 	end
 
 	
